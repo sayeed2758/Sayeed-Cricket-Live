@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#210d0e">
+<title>Live Cricket | Join Telegram</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --red: #d52e40;
+  --coral: #ff7779;
+  --dark: #210d0e;
+}
+
+body {
+  min-height: 100vh;
+  padding: 28px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #302426;
+  background:
+    radial-gradient(ellipse at 50% 25%, #582020 0%, transparent 48%),
+    linear-gradient(145deg, #321516, #170809 75%);
+}
+
+.page {
+  width: 100%;
+  max-width: 630px;
+  padding: clamp(24px, 5vw, 48px);
+  text-align: center;
+  background: linear-gradient(145deg, #fff5f4, #fffdfc);
+  border: 1px solid rgba(255, 160, 160, .8);
+  border-radius: 38px;
+  box-shadow:
+    0 25px 90px rgba(0, 0, 0, .42),
+    0 0 45px rgba(231, 70, 80, .12);
+}
+
+.brand {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 23px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  font-size: 37px;
+  background: linear-gradient(145deg, #ff8a89, #c91e38);
+  border: 5px solid white;
+  outline: 2px solid #ed777a;
+  box-shadow: 0 0 0 12px #fce9e7,
+              0 12px 30px #e8b4b2;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 8px 0 20px;
+  padding: 11px 19px;
+  border-radius: 30px;
+  border: 1px solid #efb9b9;
+  background: #fce9e8;
+  color: #a22c3b;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.badge span {
+  width: 8px;
+  height: 8px;
+  background: #e66d75;
+  border-radius: 50%;
+}
+
+h1 {
+  color: #b82d40;
+  font-size: clamp(27px, 6vw, 43px);
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: -1px;
+  overflow-wrap: anywhere;
+}
+
+.subtitle {
+  margin: 14px 0 27px;
+  color: #776568;
+  font-size: 15px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.video-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.live-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #c52235;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.live-status i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e52d43;
+  box-shadow: 0 0 10px #ed7780;
+}
+
+.video-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #080808;
+  border: 2px solid #f0cccc;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(118, 29, 39, .16);
+}
+
+.video-box iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+.telegram-btn {
+  position: relative;
+  width: 100%;
+  min-height: 66px;
+  margin-top: 27px;
+  padding: 18px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  overflow: hidden;
+  border: 1px solid #ba2336;
+  border-radius: 18px;
+  background: linear-gradient(110deg, #ff8988, #d9273e 72%, #b71931);
+  color: white;
+  font-size: 19px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 14px 26px rgba(201, 38, 57, .24);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.telegram-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 17px 32px rgba(201, 38, 57, .32);
+}
+
+.telegram-icon {
+  width: 25px;
+  height: 25px;
+  fill: white;
+  flex-shrink: 0;
+}
+
+.hint {
+  margin-top: 15px;
+  color: #887779;
+  font-size: 13px;
+}
+
+footer {
+  margin-top: 36px;
+  color: #89797a;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+footer strong {
+  color: #b72d40;
+}
+
+@media (max-width: 420px) {
+  body {
+    padding: 18px 12px;
+  }
+
+  .page {
+    padding: 27px 19px;
+    border-radius: 30px;
+  }
+
+  .brand {
+    width: 84px;
+    height: 84px;
+    font-size: 31px;
+  }
+
+  .telegram-btn {
+    min-height: 59px;
+    font-size: 16px;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="page">
+
+  <div class="brand" aria-hidden="true">🏏</div>
+
+  <div class="badge">
+    <span></span>
+    CRICKET LIVE CENTRE
+  </div>
+
+  <h1>LIVE CRICKET 🏏</h1>
+  <p class="subtitle">Watch • Enjoy • Join Our Community</p>
+
+  <div class="video-label">
+    <span>LIVE STREAMING</span>
+    <span class="live-status">
+      <i></i> LIVE
+    </span>
+  </div>
+
+  <div class="video-box">
+    <iframe
+      src="https://ci365.pages.dev/PHINDI/"
+      title="Live Cricket Streaming"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+      referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
+  </div>
+
+  <a
+    class="telegram-btn"
+    href="https://t.me/LEARNWITHSAYEEDD"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    <svg class="telegram-icon" viewBox="0 0 24 24"
+      aria-hidden="true">
+      <path d="M21.8 3.2 18.5 20c-.25 1.2-.95 1.5-1.9.95l-5.2-3.85-2.5 2.4c-.28.28-.52.52-1.05.52l.38-5.3 9.65-8.72c.42-.38-.1-.6-.65-.22L5.3 13.35.15 11.74c-1.12-.35-1.15-1.12.24-1.67L20.5 2.25c.93-.34 1.75.23 1.3.95z"/>
+    </svg>
+
+    Join on Telegram
+  </a>
+
+  <p class="hint">Opens in the Telegram app</p>
+
+  <footer>
+    © 2026 <strong>LIVE CRICKET CENTRE</strong><br>
+    Made With ❤️ By Shahid Sir
+  </footer>
+
+</main>
+</body>
+</html>
