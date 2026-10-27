@@ -1,63 +1,61 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#210d0e">
-<title>Cricket Live Centre</title>
-<meta name="description" content="Live cricket scores and cricket streaming links.">
+<title>Live Cricket Centre</title>
 
 <style>
-:root {
-  --red: #cf2340;
-  --coral: #ff8085;
-  --dark: #210d0e;
-}
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 body {
   min-height: 100vh;
-  padding: 15px 9px;
+  padding: 12px 8px;
   font-family: Arial, Helvetica, sans-serif;
   color: #342527;
   background:
-    radial-gradient(ellipse at top, #552020, transparent 58%),
+    radial-gradient(ellipse at top, #542020, transparent 58%),
     linear-gradient(145deg, #351516, #160809);
 }
+
 .page {
-  max-width: 760px;
   width: 100%;
-  margin: 12px auto;
-  padding: clamp(19px, 4.5vw, 40px);
+  max-width: 760px;
+  margin: 10px auto;
+  padding: clamp(18px, 4vw, 38px);
   text-align: center;
-  background: linear-gradient(145deg,#fff4f3,#fffdfc);
+  background: linear-gradient(145deg, #fff4f3, #fffdfc);
   border: 1px solid #efb9bb;
-  border-radius: 30px;
+  border-radius: 29px;
   box-shadow: 0 24px 75px #0006;
 }
-.logo {
-  width: 88px;
-  height: 88px;
-  margin: 0 auto 26px;
+
+.brand-icon {
+  width: 86px;
+  height: 86px;
+  margin: 0 auto 25px;
   display: grid;
   place-items: center;
-  font-size: 39px;
-  border: 5px solid #fff;
-  outline: 2px solid #ee7b83;
+  border: 5px solid white;
+  outline: 2px solid #ec7b83;
   border-radius: 50%;
-  background: linear-gradient(145deg,#ff8589,#dc1740);
-  box-shadow: 0 0 0 10px #fce8e7,0 12px 30px #e9b9b9;
+  background: linear-gradient(145deg, #ff8589, #d91e40);
+  box-shadow: 0 0 0 10px #fce8e7, 0 12px 30px #e9b9b9;
+  font-size: 38px;
 }
+
 .badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 9px;
-  padding: 11px 17px;
-  margin: 7px 0 19px;
+  margin: 8px 0 19px;
+  padding: 12px 18px;
   border: 1px solid #e9b9bb;
   border-radius: 30px;
   background: #fce9e8;
@@ -66,99 +64,119 @@ body {
   font-weight: 800;
   letter-spacing: 1.6px;
 }
-.dot {
+
+.badge-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #eb6273;
+  background: #ed6876;
 }
+
 h1 {
-  color: #bd2d41;
-  font-size: clamp(28px,6vw,43px);
+  color: #bb2b40;
+  font-size: clamp(29px, 6vw, 43px);
   font-weight: 900;
   letter-spacing: -1px;
-  line-height: 1.2;
 }
+
 .subtitle {
-  margin: 12px 0 27px;
+  margin: 12px 0 28px;
   color: #796669;
-  font-size: clamp(14px,3.5vw,18px);
-  font-style: italic;
+  font-size: clamp(14px, 3.5vw, 18px);
   font-weight: 700;
+  font-style: italic;
   line-height: 1.5;
 }
+
 .section-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  margin: 25px 0 13px;
+  gap: 10px;
+  margin-bottom: 13px;
   text-align: left;
 }
+
 .section-heading h2 {
-  color: #38282a;
-  font-size: 16px;
+  font-size: clamp(14px, 3.8vw, 17px);
 }
+
 .section-heading span {
-  font-size: 11px;
   color: #877477;
+  font-size: 11px;
 }
+
 .score-card {
   width: 100%;
+  min-height: 320px;
+  padding: 10px;
   overflow: hidden;
-  border: 1px solid #edc4c5;
+  border: 1px solid #ecc4c5;
   border-radius: 15px;
   background: #fff;
   box-shadow: 0 10px 27px #76242a12;
 }
-.score-card iframe {
-  display: block;
+
+#liveScoreRoot {
   width: 100%;
-  min-height: 470px;
-  border: 0;
-  background: #fff;
+  min-height: 300px;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
 }
-.button {
+
+/* Any ordinary anchor inside the score widget is not
+   presented as a clickable link. JavaScript below also
+   blocks normal link navigation without disabling scrolling. */
+#liveScoreRoot a {
+  cursor: default !important;
+}
+
+.watch-button,
+.telegram-button {
   width: 100%;
   min-height: 62px;
+  margin-top: 23px;
+  padding: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 15px;
   border-radius: 15px;
-  text-decoration: none;
+  font-size: clamp(16px, 4vw, 19px);
   font-weight: 800;
-  font-size: clamp(16px,4vw,19px);
-  cursor: pointer;
-  transition: transform .2s,box-shadow .2s;
+  text-decoration: none;
 }
-.button:active {
-  transform: scale(.98);
-}
-.watch {
-  margin-top: 23px;
-  color: #fff;
+
+.watch-button {
   border: 1px solid #bd1532;
-  background: linear-gradient(105deg,#ff8185,#ec2347 65%,#c90032);
+  color: #fff;
+  background: linear-gradient(105deg, #ff8185, #ec2347 65%, #c90032);
   box-shadow: 0 13px 27px #d42b4330;
 }
-.watch:hover {
-  box-shadow: 0 17px 32px #d42b4344;
-}
-.telegram {
+
+.telegram-button {
   margin-top: 13px;
-  color: #a52639;
   border: 1px solid #ebc3c5;
+  color: #a52639;
   background: #fff;
 }
-.button svg {
-  width: 23px;
-  height: 23px;
+
+.watch-button svg,
+.telegram-button svg {
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
 }
-.note {
-  margin-top: 17px;
+
+.hint {
+  margin-top: 11px;
+  color: #897679;
+  font-size: 12px;
+}
+
+.notice {
+  margin-top: 18px;
   padding: 13px;
   border: 1px solid #f0d5d4;
   border-radius: 11px;
@@ -168,32 +186,37 @@ h1 {
   font-size: 12px;
   line-height: 1.7;
 }
-.note strong {
+
+.notice strong {
   color: #a42a3b;
 }
+
 footer {
   margin-top: 28px;
   color: #89797a;
   font-size: 12px;
   line-height: 1.9;
 }
+
 footer strong {
   color: #b62c40;
 }
-@media(max-width:480px) {
-  body { padding: 8px 5px; }
+
+@media (max-width: 480px) {
+  body {
+    padding: 7px 5px;
+  }
+
   .page {
     margin: 7px auto;
     padding: 23px 13px;
     border-radius: 25px;
   }
-  .logo {
+
+  .brand-icon {
     width: 80px;
     height: 80px;
     font-size: 35px;
-  }
-  .score-card iframe {
-    min-height: 460px;
   }
 }
 </style>
@@ -202,34 +225,38 @@ footer strong {
 <body>
 <main class="page">
 
-  <div class="logo" aria-hidden="true">🏏</div>
+  <div class="brand-icon" aria-hidden="true">🏏</div>
 
   <div class="badge">
-    <span class="dot"></span>
+    <span class="badge-dot"></span>
     CRICKET LIVE CENTRE
   </div>
 
   <h1>LIVE CRICKET 🏏</h1>
-  <p class="subtitle">Watch • Follow Scores • Join Our Community</p>
 
-  <!-- Live cricket scores -->
+  <p class="subtitle">
+    Watch • Follow Scores • Join Our Community
+  </p>
+
   <div class="section-heading">
-    <h2>🏆 LIVE CRICKET SCORES</h2>
-    <span>Score centre</span>
+    <h2>🏆 LIVE MATCH SCORE</h2>
+    <span>Live score feed</span>
   </div>
 
-  <div class="score-card">
-    <iframe
-      src="https://widget.crictimes.org/"
-      title="Live Cricket Scores"
-      loading="lazy"
-      scrolling="yes">
-    </iframe>
-  </div>
+  <section class="score-card" aria-label="Live cricket scores">
+    <div id="liveScoreRoot">
+      <p style="padding:35px 10px;color:#877477;font-size:14px">
+        Loading live cricket scores...
+      </p>
 
-  <!-- Direct stream link: opens the provider page -->
+      <script
+        src="https://cdorgapi.b-cdn.net/widgets/score.js">
+      </script>
+    </div>
+  </section>
+
   <a
-    class="button watch"
+    class="watch-button"
     href="https://ci365.pages.dev/HIND2"
     target="_blank"
     rel="noopener noreferrer">
@@ -241,13 +268,12 @@ footer strong {
     WATCH LIVE
   </a>
 
-  <p style="margin-top:10px;color:#897679;font-size:12px">
-    Tap to open the live stream
+  <p class="hint">
+    Tap to open the streaming page
   </p>
 
-  <!-- Telegram community -->
   <a
-    class="button telegram"
+    class="telegram-button"
     href="https://t.me/LEARNWITHSAYEEDD"
     target="_blank"
     rel="noopener noreferrer">
@@ -259,14 +285,17 @@ footer strong {
     Join on Telegram
   </a>
 
-  <div class="note">
-    <strong>Score information:</strong>
-    Live match availability and update frequency depend on
-    the score provider.<br>
-    <strong>Streaming:</strong>
-    The WATCH LIVE button opens your supplied stream link
-    in a separate browser tab because embedded playback
-    was not working reliably.
+  <p class="hint">Opens in the Telegram app</p>
+
+  <div class="notice">
+    <strong>Score update:</strong><br>
+    Scores are supplied by the external live-score provider.
+    The widget displays live matches; availability depends
+    on its data feed.<br><br>
+
+    <strong>Video:</strong><br>
+    WATCH LIVE opens your supplied streaming page directly.
+    It does not depend on iframe playback.
   </div>
 
   <footer>
@@ -275,6 +304,24 @@ footer strong {
   </footer>
 
 </main>
+
+<script>
+/*
+  Block ordinary clicks on links rendered inside the
+  score widget, without disabling pointer/touch scrolling.
+  This works for elements inserted into this page's DOM.
+*/
+const scoreRoot = document.getElementById("liveScoreRoot");
+
+scoreRoot.addEventListener("click", function(event) {
+  const link = event.target.closest("a");
+
+  if (link && scoreRoot.contains(link)) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+}, true);
+</script>
+
 </body>
 </html>
-
