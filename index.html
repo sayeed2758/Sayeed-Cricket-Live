@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,16 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#210d0e">
 
-<title>Cricket Live Centre</title>
-<meta name="description" content="Cricket Live Centre - Watch cricket and join our Telegram community.">
+<title>Live Cricket Centre</title>
 
 <style>
 :root {
   --red: #d51f40;
-  --coral: #ff777f;
   --dark: #210d0e;
-  --card: #fff9f8;
-  --text: #302426;
 }
 
 * {
@@ -25,54 +22,53 @@
 
 body {
   min-height: 100vh;
-  padding: 22px 12px;
+  padding: 14px 10px;
   font-family: Arial, Helvetica, sans-serif;
-  color: var(--text);
+  color: #302426;
   background:
-    radial-gradient(ellipse at top, #542020 0%, transparent 55%),
+    radial-gradient(ellipse at top, #562020, transparent 58%),
     linear-gradient(145deg, #351516, #160809);
 }
 
 .page {
   width: 100%;
-  max-width: 760px;
-  margin: 20px auto;
-  padding: clamp(20px, 5vw, 46px);
+  max-width: 780px;
+  margin: 14px auto;
+  padding: clamp(18px, 4vw, 40px);
   text-align: center;
   background: linear-gradient(145deg, #fff4f3, #fffdfc);
-  border: 1px solid #f3b9bb;
-  border-radius: 32px;
+  border: 1px solid #efb8bb;
+  border-radius: 30px;
   box-shadow: 0 25px 75px #0006, 0 0 40px #e94d5618;
 }
 
 .brand-icon {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 28px;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 25px;
   display: grid;
   place-items: center;
-  font-size: 43px;
   border-radius: 50%;
-  background: linear-gradient(145deg, #ff8589, #e71940);
   border: 5px solid white;
   outline: 2px solid #ec7b83;
-  box-shadow: 0 0 0 12px #fce8e7, 0 12px 30px #e9b9b9;
+  background: linear-gradient(145deg, #ff8589, #e71940);
+  box-shadow: 0 0 0 10px #fce8e7, 0 12px 30px #e9b9b9;
+  font-size: 40px;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
-  margin: 8px 0 22px;
-  padding: 12px 20px;
+  margin: 8px 0 20px;
+  padding: 12px 19px;
   border: 1px solid #e9b9bb;
   border-radius: 40px;
   background: #fce9e8;
   color: #a52b3c;
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 1.7px;
 }
 
 .badge-dot {
@@ -87,29 +83,28 @@ h1 {
   font-size: clamp(29px, 6vw, 44px);
   font-weight: 900;
   letter-spacing: -1px;
-  line-height: 1.2;
 }
 
 .subtitle {
-  margin: 14px 0 30px;
+  margin: 13px 0 27px;
   color: #796669;
-  font-size: clamp(14px, 3.5vw, 19px);
+  font-size: clamp(14px, 3.5vw, 18px);
+  line-height: 1.5;
   font-weight: 700;
   font-style: italic;
-  line-height: 1.5;
 }
 
 .player-heading {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 10px;
-  margin-bottom: 13px;
+  margin-bottom: 12px;
   text-align: left;
 }
 
 .player-heading strong {
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .player-heading span {
@@ -117,38 +112,58 @@ h1 {
   font-size: 12px;
 }
 
+/* LARGE PLAYER */
 .video-box {
+  position: relative;
+  isolation: isolate;
   width: 100%;
   aspect-ratio: 16 / 9;
-  position: relative;
   overflow: hidden;
   background: #000;
   border: 2px solid #efc7c8;
-  border-radius: 17px;
+  border-radius: 15px;
   box-shadow: 0 12px 32px #8c26301c;
 }
 
 .video-box iframe {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  display: block;
   border: 0;
   background: #000;
 }
 
+/*
+  Covers the source page's top-left Telegram banner.
+  This also blocks clicks in the covered region.
+*/
+.banner-blocker {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 17%;
+  background: #000;
+  pointer-events: auto;
+}
+
+/* PLAYER ACTIONS */
 .player-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 13px;
 }
 
 .action-btn {
-  display: flex;
   min-height: 48px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 11px 8px;
   border: 1px solid #e4c6c7;
   border-radius: 10px;
   background: #fff;
@@ -157,61 +172,58 @@ h1 {
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
-  transition: transform .2s, background .2s;
 }
 
-.action-btn:hover {
-  transform: translateY(-2px);
-  background: #fff0ef;
+.action-btn:active {
+  transform: scale(.98);
 }
 
 .telegram-btn {
   width: 100%;
-  min-height: 68px;
-  margin-top: 27px;
-  padding: 17px 14px;
+  min-height: 66px;
+  margin-top: 26px;
+  padding: 16px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 13px;
+  gap: 12px;
   border: 1px solid #c31b36;
   border-radius: 17px;
   background: linear-gradient(110deg, #ff8586, #ef2348 65%, #c90032);
   box-shadow: 0 13px 28px #d42b432e;
-  color: white;
+  color: #fff;
   font-size: clamp(16px, 4vw, 20px);
   font-weight: 800;
   text-decoration: none;
-  transition: transform .2s, box-shadow .2s;
+  transition: transform .2s;
 }
 
 .telegram-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 17px 32px #d42b4345;
 }
 
 .telegram-btn svg {
-  width: 26px;
-  height: 26px;
+  width: 27px;
+  height: 27px;
   fill: white;
   flex-shrink: 0;
 }
 
 .hint {
-  margin-top: 14px;
+  margin-top: 13px;
   color: #8c777a;
   font-size: 13px;
 }
 
 .notice {
-  margin-top: 20px;
-  padding: 15px;
+  margin-top: 19px;
+  padding: 14px;
   border: 1px solid #f0d5d4;
   border-radius: 12px;
   background: #fff4f2;
   color: #796568;
   font-size: 13px;
-  line-height: 1.7;
+  line-height: 1.65;
   text-align: left;
 }
 
@@ -220,7 +232,7 @@ h1 {
 }
 
 footer {
-  margin-top: 32px;
+  margin-top: 30px;
   color: #8b7a7c;
   font-size: 12px;
   line-height: 1.9;
@@ -232,40 +244,29 @@ footer strong {
 
 @media (max-width: 480px) {
   body {
-    padding: 12px 8px;
+    padding: 8px 5px;
   }
 
   .page {
-    margin: 8px auto;
-    padding: 25px 16px;
-    border-radius: 27px;
+    margin: 7px auto;
+    padding: 23px 13px;
+    border-radius: 25px;
   }
 
   .brand-icon {
-    width: 86px;
-    height: 86px;
-    font-size: 36px;
+    width: 80px;
+    height: 80px;
+    font-size: 34px;
   }
 
-  .player-heading strong {
-    font-size: 13px;
-  }
-
-  .player-actions {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    transition: none !important;
+  .video-box {
+    border-radius: 12px;
   }
 }
 </style>
 </head>
 
 <body>
-
 <main class="page">
 
   <div class="brand-icon" aria-hidden="true">🏏</div>
@@ -287,21 +288,28 @@ footer strong {
   </div>
 
   <div class="video-box" id="videoBox">
+
     <iframe
       id="cricketFrame"
-      src="https://ci365.pages.dev/PHINDI/"
-      title="Cricket streaming provider"
+      src="https://ci365.pages.dev/HIND2"
+      title="Cricket Streaming"
       allow="autoplay; fullscreen; picture-in-picture"
       allowfullscreen
       referrerpolicy="strict-origin-when-cross-origin">
     </iframe>
+
+    <div
+      class="banner-blocker"
+      aria-hidden="true">
+    </div>
+
   </div>
 
   <div class="player-actions">
 
     <a
       class="action-btn"
-      href="https://ci365.pages.dev/PHINDI/"
+      href="https://ci365.pages.dev/HIND2"
       target="_blank"
       rel="noopener noreferrer">
       ↗ Open Stream
@@ -333,10 +341,9 @@ footer strong {
 
   <div class="notice">
     <strong>Video not playing?</strong><br>
-    Use “Open Stream” to test the provider directly.
-    If it works there but not here, the provider may block
-    embedded playback. If it shows 0:00 in both places,
-    the stream may be unavailable or its source may have changed.
+    Use Open Stream to test the provider directly.
+    If the video plays directly but not here, the provider
+    may restrict embedded playback.
   </div>
 
   <footer>
@@ -347,9 +354,9 @@ footer strong {
 </main>
 
 <script>
+const videoBox = document.getElementById("videoBox");
 const frame = document.getElementById("cricketFrame");
 const fullscreenBtn = document.getElementById("fullscreenBtn");
-const videoBox = document.getElementById("videoBox");
 
 fullscreenBtn.addEventListener("click", async () => {
   try {
@@ -358,11 +365,15 @@ fullscreenBtn.addEventListener("click", async () => {
     } else if (videoBox.requestFullscreen) {
       await videoBox.requestFullscreen();
     } else {
-      frame.focus();
+      window.open(
+        "https://ci365.pages.dev/HIND2",
+        "_blank",
+        "noopener,noreferrer"
+      );
     }
   } catch (error) {
     window.open(
-      "https://ci365.pages.dev/PHINDI/",
+      "https://ci365.pages.dev/HIND2",
       "_blank",
       "noopener,noreferrer"
     );
@@ -372,4 +383,3 @@ fullscreenBtn.addEventListener("click", async () => {
 
 </body>
 </html>
-
