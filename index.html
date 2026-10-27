@@ -298,8 +298,16 @@ async function refreshScore() {
 
     // Prefer the currently live IND vs NZ match.
     const candidates = matches
-      .filter(match => findTeams(match))
-      .sort((a, b) => Number(isLive(b)) - Number(isLive(a)));
+  .filter(match => {
+    const teams = findTeams(match);
+    const name = (match.name || "").toLowerCase();
+
+    return teams &&
+      /new zealand|india/.test(name) &&
+      /t20i/.test(name) &&
+      /3rd|third/.test(name);
+  })
+  .sort((a, b) => Number(isLive(b)) - Number(isLive(a)));
 
     if (!candidates.length) {
       throw new Error("IND vs NZ match data is not available from this API right now.");
