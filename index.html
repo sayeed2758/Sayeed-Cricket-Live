@@ -1,327 +1,329 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#210d0e">
-<title>Live Cricket Centre</title>
+<title>IND vs NZ Live Score</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100vh;padding:14px 9px;
+  font-family:Arial,sans-serif;color:#342527;
+  background:radial-gradient(ellipse at top,#552020,transparent 58%),
+             linear-gradient(145deg,#351516,#160809)
 }
-
-body {
-  min-height: 100vh;
-  padding: 12px 8px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #342527;
-  background:
-    radial-gradient(ellipse at top, #542020, transparent 58%),
-    linear-gradient(145deg, #351516, #160809);
+.page{
+  max-width:650px;width:100%;margin:10px auto;
+  padding:25px 17px;text-align:center;
+  background:linear-gradient(145deg,#fff4f3,#fffdfc);
+  border:1px solid #efb9bb;border-radius:28px;
+  box-shadow:0 24px 75px #0006
 }
-
-.page {
-  width: 100%;
-  max-width: 760px;
-  margin: 10px auto;
-  padding: clamp(18px, 4vw, 38px);
-  text-align: center;
-  background: linear-gradient(145deg, #fff4f3, #fffdfc);
-  border: 1px solid #efb9bb;
-  border-radius: 29px;
-  box-shadow: 0 24px 75px #0006;
+.logo{
+  width:76px;height:76px;margin:0 auto 22px;
+  display:grid;place-items:center;font-size:34px;
+  border:4px solid white;outline:2px solid #ec7b83;
+  border-radius:50%;background:linear-gradient(145deg,#ff8589,#d91e40);
+  box-shadow:0 0 0 9px #fce8e7
 }
-
-.brand-icon {
-  width: 86px;
-  height: 86px;
-  margin: 0 auto 25px;
-  display: grid;
-  place-items: center;
-  border: 5px solid white;
-  outline: 2px solid #ec7b83;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #ff8589, #d91e40);
-  box-shadow: 0 0 0 10px #fce8e7, 0 12px 30px #e9b9b9;
-  font-size: 38px;
+.badge{
+  display:inline-block;padding:11px 17px;margin-bottom:18px;
+  border:1px solid #e9b9bb;border-radius:30px;
+  background:#fce9e8;color:#a52b3c;
+  font-size:11px;font-weight:800;letter-spacing:1.5px
 }
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin: 8px 0 19px;
-  padding: 12px 18px;
-  border: 1px solid #e9b9bb;
-  border-radius: 30px;
-  background: #fce9e8;
-  color: #a52b3c;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1.6px;
+h1{color:#bb2b40;font-size:clamp(27px,6vw,39px)}
+.subtitle{margin:11px 0 26px;color:#796669;font-style:italic}
+.card{
+  overflow:hidden;background:white;border:1px solid #edc4c5;
+  border-radius:19px;box-shadow:0 12px 30px #76242a12;
+  text-align:left
 }
-
-.badge-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ed6876;
+.card-top{
+  padding:17px;background:linear-gradient(110deg,#fff0ef,#fffafa);
+  border-bottom:1px solid #f0dada
 }
-
-h1 {
-  color: #bb2b40;
-  font-size: clamp(29px, 6vw, 43px);
-  font-weight: 900;
-  letter-spacing: -1px;
+.topline{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.match-name{font-size:13px;font-weight:800;color:#8d3541}
+.status{
+  display:inline-flex;align-items:center;gap:6px;
+  color:#c5243b;font-size:11px;font-weight:800
 }
-
-.subtitle {
-  margin: 12px 0 28px;
-  color: #796669;
-  font-size: clamp(14px, 3.5vw, 18px);
-  font-weight: 700;
-  font-style: italic;
-  line-height: 1.5;
+.status i{width:8px;height:8px;border-radius:50%;background:#e52d43}
+.teams{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;gap:10px;padding:23px 14px;text-align:center
 }
-
-.section-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 13px;
-  text-align: left;
+.team-name{font-size:18px;font-weight:900;color:#342527}
+.team-code{font-size:12px;color:#8b777a;margin-bottom:8px}
+.score{font-size:clamp(21px,5.5vw,29px);font-weight:900;color:#b52b40;margin-top:12px;overflow-wrap:anywhere}
+.overs{font-size:13px;color:#77676a;margin-top:5px}
+.vs{font-size:13px;font-weight:800;color:#a99b9c}
+.divider{height:1px;background:#f0dddd;margin:0 16px}
+.match-status{padding:14px 16px 18px;text-align:center}
+#statusText{font-size:14px;font-weight:700;color:#8e3744;line-height:1.6}
+.venue{font-size:12px;color:#8c797c;margin-top:7px}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
+button,.btn{
+  min-height:49px;border:0;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px;font-size:14px;font-weight:800;text-decoration:none;
+  cursor:pointer
 }
-
-.section-heading h2 {
-  font-size: clamp(14px, 3.8vw, 17px);
+.refresh{background:#fff;color:#a52b3c;border:1px solid #ebc3c5}
+.refresh:disabled{opacity:.6;cursor:wait}
+.watch{background:linear-gradient(105deg,#ff8185,#ec2347 65%,#c90032);color:white}
+.telegram{
+  width:100%;margin-top:12px;background:white;color:#a52b3c;
+  border:1px solid #ebc3c5
 }
-
-.section-heading span {
-  color: #877477;
-  font-size: 11px;
-}
-
-.score-card {
-  width: 100%;
-  min-height: 320px;
-  padding: 10px;
-  overflow: hidden;
-  border: 1px solid #ecc4c5;
-  border-radius: 15px;
-  background: #fff;
-  box-shadow: 0 10px 27px #76242a12;
-}
-
-#liveScoreRoot {
-  width: 100%;
-  min-height: 300px;
-  overflow: hidden;
-  overscroll-behavior: contain;
-  touch-action: pan-y;
-}
-
-/* Any ordinary anchor inside the score widget is not
-   presented as a clickable link. JavaScript below also
-   blocks normal link navigation without disabling scrolling. */
-#liveScoreRoot a {
-  cursor: default !important;
-}
-
-.watch-button,
-.telegram-button {
-  width: 100%;
-  min-height: 62px;
-  margin-top: 23px;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  border-radius: 15px;
-  font-size: clamp(16px, 4vw, 19px);
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.watch-button {
-  border: 1px solid #bd1532;
-  color: #fff;
-  background: linear-gradient(105deg, #ff8185, #ec2347 65%, #c90032);
-  box-shadow: 0 13px 27px #d42b4330;
-}
-
-.telegram-button {
-  margin-top: 13px;
-  border: 1px solid #ebc3c5;
-  color: #a52639;
-  background: #fff;
-}
-
-.watch-button svg,
-.telegram-button svg {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
-.hint {
-  margin-top: 11px;
-  color: #897679;
-  font-size: 12px;
-}
-
-.notice {
-  margin-top: 18px;
-  padding: 13px;
-  border: 1px solid #f0d5d4;
-  border-radius: 11px;
-  background: #fff4f2;
-  color: #796568;
-  text-align: left;
-  font-size: 12px;
-  line-height: 1.7;
-}
-
-.notice strong {
-  color: #a42a3b;
-}
-
-footer {
-  margin-top: 28px;
-  color: #89797a;
-  font-size: 12px;
-  line-height: 1.9;
-}
-
-footer strong {
-  color: #b62c40;
-}
-
-@media (max-width: 480px) {
-  body {
-    padding: 7px 5px;
-  }
-
-  .page {
-    margin: 7px auto;
-    padding: 23px 13px;
-    border-radius: 25px;
-  }
-
-  .brand-icon {
-    width: 80px;
-    height: 80px;
-    font-size: 35px;
-  }
+.note{font-size:12px;color:#8b777a;line-height:1.6;margin-top:13px}
+footer{margin-top:25px;color:#89797a;font-size:12px;line-height:1.9}
+footer strong{color:#b62c40}
+.error{padding:18px;color:#8a5b60;font-size:13px;line-height:1.7}
+@media(max-width:380px){
+  .page{padding:21px 11px}
+  .teams{padding:20px 7px;gap:5px}
+  .team-name{font-size:15px}
+  .score{font-size:20px}
 }
 </style>
 </head>
 
 <body>
 <main class="page">
+  <div class="logo">🏏</div>
+  <div class="badge">CRICKET LIVE CENTRE</div>
+  <h1>INDIA vs NEW ZEALAND</h1>
+  <p class="subtitle">Live Match Scorecard</p>
 
-  <div class="brand-icon" aria-hidden="true">🏏</div>
-
-  <div class="badge">
-    <span class="badge-dot"></span>
-    CRICKET LIVE CENTRE
-  </div>
-
-  <h1>LIVE CRICKET 🏏</h1>
-
-  <p class="subtitle">
-    Watch • Follow Scores • Join Our Community
-  </p>
-
-  <div class="section-heading">
-    <h2>🏆 LIVE MATCH SCORE</h2>
-    <span>Live score feed</span>
-  </div>
-
-  <section class="score-card" aria-label="Live cricket scores">
-    <div id="liveScoreRoot">
-      <p style="padding:35px 10px;color:#877477;font-size:14px">
-        Loading live cricket scores...
-      </p>
-
-      <script
-        src="https://cdorgapi.b-cdn.net/widgets/score.js">
-      </script>
+  <section class="card">
+    <div class="card-top">
+      <div class="topline">
+        <span class="match-name">INDIA vs NEW ZEALAND</span>
+        <span class="status" id="liveStatus"><i></i> LOADING</span>
+      </div>
     </div>
+
+    <div class="teams">
+      <div>
+        <div class="team-code">IND</div>
+        <div class="team-name">INDIA</div>
+        <div class="score" id="indScore">—</div>
+        <div class="overs" id="indOvers"></div>
+      </div>
+
+      <div class="vs">VS</div>
+
+      <div>
+        <div class="team-code">NZ</div>
+        <div class="team-name">NEW ZEALAND</div>
+        <div class="score" id="nzScore">—</div>
+        <div class="overs" id="nzOvers"></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="match-status">
+      <div id="statusText">Loading match information...</div>
+      <div class="venue" id="venue"></div>
+    </div>
+
+    <div class="error" id="errorBox" hidden></div>
   </section>
 
-  <a
-    class="watch-button"
-    href="https://ci365.pages.dev/HIND2"
-    target="_blank"
-    rel="noopener noreferrer">
+  <div class="controls">
+    <button class="refresh" id="refreshBtn" type="button">
+      ↻ Refresh Score
+    </button>
+    <a class="btn watch"
+       href="https://ci365.pages.dev/HIND2"
+       target="_blank" rel="noopener noreferrer">
+      ▶ WATCH LIVE
+    </a>
+  </div>
 
-    <svg viewBox="0 0 24 24" fill="currentColor"
-      aria-hidden="true">
-      <path d="M8 5v14l11-7z"/>
-    </svg>
-    WATCH LIVE
-  </a>
-
-  <p class="hint">
-    Tap to open the streaming page
-  </p>
-
-  <a
-    class="telegram-button"
-    href="https://t.me/LEARNWITHSAYEEDD"
-    target="_blank"
-    rel="noopener noreferrer">
-
-    <svg viewBox="0 0 24 24" fill="#249bd7"
-      aria-hidden="true">
-      <path d="M21.8 3.2 18.5 20c-.25 1.2-.95 1.5-1.9.95l-5.2-3.85-2.5 2.4c-.28.28-.52.52-1.05.52l.38-5.3 9.65-8.72c.42-.38-.1-.6-.65-.22L5.3 13.35.15 11.74c-1.12-.35-1.15-1.12.24-1.67L20.5 2.25c.93-.34 1.75.23 1.3.95z"/>
-    </svg>
+  <a class="btn telegram"
+     href="https://t.me/LEARNWITHSAYEEDD"
+     target="_blank" rel="noopener noreferrer">
     Join on Telegram
   </a>
 
-  <p class="hint">Opens in the Telegram app</p>
-
-  <div class="notice">
-    <strong>Score update:</strong><br>
-    Scores are supplied by the external live-score provider.
-    The widget displays live matches; availability depends
-    on its data feed.<br><br>
-
-    <strong>Video:</strong><br>
-    WATCH LIVE opens your supplied streaming page directly.
-    It does not depend on iframe playback.
-  </div>
+  <p class="note" id="updated">Score has not been refreshed yet.</p>
 
   <footer>
     © 2026 <strong>LIVE CRICKET CENTRE</strong><br>
     Made With ❤️ By Shahid Sir
   </footer>
-
 </main>
 
 <script>
 /*
-  Block ordinary clicks on links rendered inside the
-  score widget, without disabling pointer/touch scrolling.
-  This works for elements inserted into this page's DOM.
+  SETUP:
+  1. Register at cricketdata.org.
+  2. Copy your API key.
+  3. Replace PASTE_YOUR_API_KEY_HERE below.
+
+  For a public website, a server-side proxy is safer because
+  API keys placed in HTML can be seen by visitors.
 */
-const scoreRoot = document.getElementById("liveScoreRoot");
+const API_KEY = "22b7353c-c2ce-4d68-9c45-c6f4d11b5cbc";
+const API_URL = "https://api.cricapi.com/v1/currentMatches";
 
-scoreRoot.addEventListener("click", function(event) {
-  const link = event.target.closest("a");
+const $ = id => document.getElementById(id);
 
-  if (link && scoreRoot.contains(link)) {
-    event.preventDefault();
-    event.stopPropagation();
+function setText(id, value) {
+  $(id).textContent = value || "";
+}
+
+function teamType(name) {
+  const n = (name || "").toLowerCase();
+  if (/\b(india|indian cricket team)\b/.test(n) || n === "ind") return "ind";
+  if (/\b(new zealand|nz)\b/.test(n)) return "nz";
+  return "";
+}
+
+function findTeams(match) {
+  const names = match.teams || [];
+  let ind = "", nz = "";
+
+  names.forEach(name => {
+    const type = teamType(name);
+    if (type === "ind") ind = name;
+    if (type === "nz") nz = name;
+  });
+
+  if (!ind || !nz) {
+    const full = (match.name || "") + " " + (match.teams || []).join(" ");
+    if (!/\bindia\b/i.test(full) ||
+        !/new zealand/i.test(full)) return null;
+    ind = ind || "India";
+    nz = nz || "New Zealand";
   }
-}, true);
-</script>
 
+  return {ind, nz};
+}
+
+function formatScore(entries, teamName) {
+  if (!Array.isArray(entries)) return null;
+
+  const relevant = entries.filter(entry => {
+    const inning = (entry.inning || "").toLowerCase();
+    return inning.includes(teamName.toLowerCase());
+  });
+
+  if (!relevant.length) return null;
+
+  const latest = relevant[relevant.length - 1];
+  const runs = latest.r ?? latest.runs;
+  const wickets = latest.w ?? latest.wickets;
+  const overs = latest.o ?? latest.overs;
+
+  if (runs == null) return null;
+
+  return {
+    score: wickets == null ? String(runs) : `${runs}/${wickets}`,
+    overs: overs == null ? "" : `Overs ${overs}`
+  };
+}
+
+function isLive(match) {
+  if (match.matchEnded === true) return false;
+  const text = (match.status || "").toLowerCase();
+
+  if (match.matchStarted === true && match.matchEnded !== true) {
+    return true;
+  }
+
+  return /\blive\b|in progress|innings break|stumps|day \d+/.test(text);
+}
+
+function renderMatch(match) {
+  const scores = match.score || [];
+  const teams = findTeams(match);
+
+  if (!teams) return false;
+
+  const ind = formatScore(scores, teams.ind);
+  const nz = formatScore(scores, teams.nz);
+
+  setText("indScore", ind ? ind.score : "—");
+  setText("indOvers", ind ? ind.overs : "");
+  setText("nzScore", nz ? nz.score : "—");
+  setText("nzOvers", nz ? nz.overs : "");
+
+  const live = isLive(match);
+  setText("liveStatus", live ? "● LIVE" :
+    match.matchEnded ? "● COMPLETED" : "● UPCOMING");
+
+  setText("statusText", match.status ||
+    (live ? "Match in progress" :
+     match.matchEnded ? "Match completed" : "Match not started"));
+
+  setText("venue", match.venue || "");
+  return true;
+}
+
+async function refreshScore() {
+  const btn = $("refreshBtn");
+  const error = $("errorBox");
+
+  if (!API_KEY || API_KEY === "PASTE_YOUR_API_KEY_HERE") {
+    error.hidden = false;
+    error.textContent =
+      "API key required. Register at cricketdata.org and add your API key in the code.";
+    setText("liveStatus", "● SETUP REQUIRED");
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = "↻ Updating...";
+  error.hidden = true;
+
+  try {
+    const url = `${API_URL}?apikey=${encodeURIComponent(API_KEY)}&offset=0`;
+    const response = await fetch(url, {cache: "no-store"});
+
+    if (!response.ok) throw new Error("Score service unavailable.");
+
+    const data = await response.json();
+    if (data.status && data.status !== "success") {
+      throw new Error(data.reason || "API returned an error.");
+    }
+
+    const matches = Array.isArray(data.data) ? data.data : [];
+
+    // Prefer the currently live IND vs NZ match.
+    const candidates = matches
+      .filter(match => findTeams(match))
+      .sort((a, b) => Number(isLive(b)) - Number(isLive(a)));
+
+    if (!candidates.length) {
+      throw new Error("IND vs NZ match data is not available from this API right now.");
+    }
+
+    // Show only one IND vs NZ match, never other matches.
+    renderMatch(candidates[0]);
+    setText("updated", "Last checked: " + new Date().toLocaleTimeString());
+  } catch (e) {
+    error.hidden = false;
+    error.textContent = e.message ||
+      "Could not load the score. Please try again.";
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "↻ Refresh Score";
+  }
+}
+
+$("refreshBtn").addEventListener("click", refreshScore);
+
+// Automatic refresh every 60 seconds.
+refreshScore();
+setInterval(refreshScore, 60000);
+</script>
 </body>
 </html>
+
